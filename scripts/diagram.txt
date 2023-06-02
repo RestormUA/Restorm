@@ -1,0 +1,11 @@
+Mqtt Broker topics:
+    Energy_Price: Valor da energia da OMIE      RETAIN = TRUE
+    Gas_Price: Valor do gás do Home Assistant   RETAIN = TRUE
+    PWM_Sensor: Valor de PWM                    RETAIN = FALSE
+    Modo: Comprar/Vender                        RETAIN = FALSE
+
+Códigos:
+    energy_price.py: Vai buscar o preço da energia e atualiza o valor no topico "Energy_Price"
+    gas_price.py: Vai buscar o preço do Home Assistant e atualiza o valor no topico "Gas_Price"
+    store_prices.py: Vai ao Broker buscar os valores dos tópicos "Energy_Price" e "Gas_Price" e guarda no ficheiro "prices.json"
+    mode.py: Vai ao ficheiro "prices.json" lê os valores, calcula se compensa vender ou comprar e atualiza no tópico "Modo"

@@ -1,0 +1,8 @@
+# Energy 
+30 13 * * * /usr/bin/env python3 /home/pi/PEE/scripts/energy_price.py
+# Gas
+*/10 * * * * /usr/bin/env python3 /home/pi/PEE/scripts/gas_price.py
+# Store Prices
+*/10 * * * * /usr/bin/env python3 /home/pi/PEE/scripts/store_prices.py
+# Mode
+*/10 * * * * /usr/bin/env python3 /home/pi/PEE/scripts/mode.py
