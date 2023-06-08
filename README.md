@@ -7,6 +7,7 @@ This is the official repository for all codes being used in Restorm project.
 ## RPI
 - *python-scripts*
 This codes run in AppDaemon Home Assistant add-on. They should be placed in */config/appdaemon/apps*. 
+
 |File            |Description					|
 |----------------|-------------------------------|
 |`'energy_price.py'`|Gets the hourly energy price through OMIE database and updates it in the entity sensor.|           
