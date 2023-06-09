@@ -11,7 +11,7 @@ class energy_price(hass.Hass):
         
         self.energy_price = self.get_entity("sensor.EnergyPrice")
         if not self.energy_price.exists:
-            self.energy_price.add(state=123, atributes={"unit_of_measurement": "€/MWh"})
+            self.energy_price.add(state=123, attributes={"unit_of_measurement": "'€/MWh'"})
         
         
     def getHourValue(self, kwargs):
