@@ -5,7 +5,8 @@ This is the official repository for all codes being used in Restorm project.
 
 # Folders and Files
 ## RPI
-- *python-scripts*
+- \>*/python-scripts*
+
 This codes run in AppDaemon Home Assistant add-on. They should be placed in */config/appdaemon/apps*. 
 
 |File            |Description					|
@@ -13,14 +14,27 @@ This codes run in AppDaemon Home Assistant add-on. They should be placed in */co
 |`'energy_price.py'`|Gets the hourly energy price through OMIE database and updates it in the entity sensor.|           
 |`'gas_price.py'`|Gets the gas price inputted by the user in the dashboard and updates it in the entity sensor.|
 
-- *configs*
+- \>*/configs*
+
+This files are essential to run previous codes and create entities/automation.
 
 |File            |Description					|
 |----------------|-------------------------------|
-|`'mqtt-sensor.yaml'`|Configuration for *configuration.yaml* in Home Assistant. Creates sensors for all topics that can be used to store all values.|
+|`'apps.yaml'`|Configuration to run the previous python-scripts in the AppDaemon add-on. Should be placed in */config/appdaemon/apps/apps.yaml* inside Home Assistant.|
+|`'appdaemon.yaml'`|Configuration for AppDaemon add-on. Needs Home Assistant IP and a long lived token created by the user. Should be placed in */config/appdaemon/appdaemon.yaml* inside Home Assistant.|
+|`'configuration.yaml'`|Example configuration of our Home Assistant. Creates a MQTT sensor for Duty-Cycle (PWM_Sensor) and configurates InfluxDB add-on. Should be placed in */config/configuration.yaml* inside Home Assistant.|
+
+- \>*/automation*
+
+Code for our automation that sends which mode should the ESP32 work on.
+
+|File            |Description					|
+|----------------|-------------------------------|
+|`'MQTTMode.yaml'`|Automation to send mode (Sell/Buy) to ESP32 via MQTT based on the user selection.|
 
 ## ESP32
 All codes are running on Micropython firmware.
+
 |File            |Description					|
 |----------------|-------------------------------|
 |`'boot.py'`|Runs on boot. Connects to Wifi getting IP via DHCP.|           
