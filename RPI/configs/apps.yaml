@@ -1,0 +1,8 @@
+---
+energy_price:
+  module: energy_price
+  class: energy_price
+  
+gas_price:
+  module: gas_price
+  class: gas_price 

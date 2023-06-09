@@ -1,0 +1,54 @@
+alias: MQTT Mode
+description: Sends mode to MQTT
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.energyprice
+      - sensor.gasprice
+      - input_select.mode
+condition: []
+action:
+  - if:
+      - condition: state
+        entity_id: input_select.mode
+        state: Automatic
+    then:
+      - if:
+          - condition: template
+            value_template: >-
+              float(states('sensor.energyprice'))*0.2 >
+              float(states('sensor.gasprice'))
+        then:
+          - service: mqtt.publish
+            data:
+              qos: "0"
+              retain: true
+              topic: Mode
+              payload: "0"
+        else:
+          - service: mqtt.publish
+            data:
+              qos: "0"
+              retain: true
+              topic: Mode
+              payload: "1"
+    else:
+      - if:
+          - condition: state
+            entity_id: input_select.mode
+            state: Sell
+        then:
+          - service: mqtt.publish
+            data:
+              qos: "0"
+              retain: true
+              topic: Mode
+              payload: "0"
+        else:
+          - service: mqtt.publish
+            data:
+              qos: "0"
+              retain: true
+              topic: Mode
+              payload: "1"
+mode: single

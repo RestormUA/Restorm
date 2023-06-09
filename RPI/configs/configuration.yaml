@@ -1,0 +1,25 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+mqtt:   # Creates a sensor (entity) that keeps track of the "PWM_Sersor" topic
+    sensor:
+        - name: "PWM Sensor"
+          state_topic: "PWM_Sensor"
+          unit_of_measurement: "%"
+          
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: # name of database
+  username: # username
+  password: # !secret influxdbpwd
+  max_retries: 3
+  default_measurement: state
