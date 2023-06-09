@@ -16,8 +16,8 @@ action:
       - if:
           - condition: template
             value_template: >-
-              float(states('sensor.energyprice'))*0.2 >
-              float(states('sensor.gasprice'))
+              (float(states('sensor.energyprice'))*0.95*0.207) >
+              (float(states('sensor.gasprice')*0.75))
         then:
           - service: mqtt.publish
             data:
